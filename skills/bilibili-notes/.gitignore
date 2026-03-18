@@ -1,0 +1,16 @@
+# Local auth
+cookie.txt
+cookie.json
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Generated outputs
+output/
+outputs/
+screenshots/
+*.segments.json
+pipeline_manifest.json
+*_笔记.md
+*_笔记_纯文字.md
