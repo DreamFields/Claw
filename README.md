@@ -116,6 +116,19 @@ AI 会根据文件中的结构化信息和迁移指南自动：
 3. **二进制文件** — 工具会跳过无法处理的二进制文件，需要手动迁移
 4. **验证导出** — 导出后可以快速浏览文件，确认内容完整
 
+## 🧩 仓库内附带 Skills
+
+当前仓库额外收录了两个可复用的 CodeBuddy skill：
+
+- `skills/bilibili-notes` — 从 B 站视频提取字幕、截图并生成结构化笔记
+- `skills/md2notion` — 将 Markdown 笔记和本地图片上传到 Notion
+
+出于安全考虑，仓库已显式排除以下内容，不会被提交：
+
+- `bilibili-notes` 下的真实 `cookie.txt`、`cookie.json`
+- 所有 `node_modules`、`__pycache__`、`.env*` 等本地依赖与环境文件
+
 ## 📄 License
+
 
 MIT License

@@ -31,3 +31,13 @@ $null
 
 # CodeBuddy
 .codebuddy/
+
+# Bundled skills
+skills/**/__pycache__/
+skills/**/node_modules/
+skills/**/.git/
+skills/**/.env
+skills/**/.env.*
+skills/bilibili-notes/cookie.txt
+skills/bilibili-notes/cookie.json
+
