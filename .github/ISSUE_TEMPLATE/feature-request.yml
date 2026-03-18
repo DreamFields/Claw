@@ -1,0 +1,44 @@
+name: Feature request
+description: Suggest an improvement for Claw or the bundled skills.
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: Which part of the repository should be improved?
+      options:
+        - Claw CLI
+        - bilibili-notes
+        - md2notion
+        - Documentation
+        - Repository structure
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What problem are you trying to solve?
+      placeholder: It would be helpful if ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the feature or improvement you want.
+      placeholder: I suggest adding ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes
+      description: Links, references, or examples.

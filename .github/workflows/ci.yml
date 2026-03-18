@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  python-check:
+    name: Python checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate Claw CLI syntax
+        run: python -m py_compile claw.py
+
+      - name: Validate bilibili-notes scripts
+        run: python -m compileall -q skills/bilibili-notes/scripts
+
+  node-check:
+    name: Node checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate md2notion scripts
+        run: |
+          node --check skills/md2notion/scripts/start_server.js
+          node --check skills/md2notion/scripts/upload.js

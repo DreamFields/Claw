@@ -1,6 +1,20 @@
 # 🐾 Claw
 
-`Claw` 是一个面向 **AI 辅助迁移** 的 Git 提交导出工具，同时这个仓库也整理收录了一组可复用的 CodeBuddy skills，方便公开分享、二次开发和直接复用。
+[![CI](https://img.shields.io/github/actions/workflow/status/DreamFields/Claw/ci.yml?branch=main&label=CI)](https://github.com/DreamFields/Claw/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Stars](https://img.shields.io/github/stars/DreamFields/Claw?style=social)](https://github.com/DreamFields/Claw/stargazers)
+
+**Claw** 是一个面向 **AI 辅助迁移** 的 Git 提交导出工具，同时这个仓库也整理收录了一组可复用的 CodeBuddy skills，方便公开分享、二次开发和直接复用。
+
+> Export Git commits into AI-friendly artifacts, and keep a curated set of reusable skills in one repository.
+
+## ✨ 快速导航
+
+- **主工具**：`claw.py`
+- **技能索引**：[skills/README.md](skills/README.md)
+- **B 站笔记 skill**：[skills/bilibili-notes/README.md](skills/bilibili-notes/README.md)
+- **Markdown to Notion skill**：[skills/md2notion/README.md](skills/md2notion/README.md)
+- **许可证**：[LICENSE](LICENSE)
 
 ## ✨ 仓库包含什么
 
@@ -8,12 +22,17 @@
 - `skills/`：整理后的公开 skill 集合，目前包含：
   - `bilibili-notes`：从 B 站视频提取字幕、截图并生成结构化技术笔记
   - `md2notion`：将 Markdown 笔记与本地图片上传到 Notion
+- `.github/`：基础 CI 工作流与 issue 模板，便于公开协作
 
 ## 📁 仓库结构
 
 ```text
 Claw/
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   └── workflows/
 ├── claw.py
+├── LICENSE
 ├── README.md
 └── skills/
     ├── README.md
@@ -21,6 +40,7 @@ Claw/
     │   ├── README.md
     │   ├── SKILL.md
     │   ├── .gitignore
+    │   ├── requirements.txt
     │   ├── scripts/
     │   ├── assets/
     │   └── references/
@@ -92,6 +112,14 @@ AI 通常可以据此：
 - 修改已有文件
 - 删除或重命名文件
 - 逐项还原 diff 里的代码改动
+
+## 🛠️ 开源协作支持
+
+这个仓库现在包含一些基础开源协作设施：
+
+- **GitHub Actions CI**：自动检查 `claw.py`、`bilibili-notes` Python 脚本、`md2notion` Node 脚本的基础语法
+- **Issue 模板**：区分 bug report 与 feature request
+- **清晰的 skill 索引**：降低仓库访客的理解成本
 
 ## 🔐 安全说明
 
