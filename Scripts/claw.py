@@ -6,8 +6,9 @@ Claw - Git Commit Exporter for AI Migration
 便于后续迁移项目时让 AI 自动识别并恢复代码变更。
 
 用法:
-    python claw.py <commit_hash> [options]
-    python claw.py <commit_hash1>..<commit_hash2> [options]  # 导出范围内的提交
+    python Scripts/claw.py <commit_hash> [options]
+    python Scripts/claw.py <commit_hash1>..<commit_hash2> [options]  # 导出范围内的提交
+
 """
 
 import subprocess
@@ -530,11 +531,12 @@ def create_parser() -> argparse.ArgumentParser:
         prog="claw",
         description="🐾 Claw - Git Commit Exporter for AI Migration",
         epilog="示例:\n"
-               "  python claw.py abc123\n"
-               "  python claw.py abc123 -o changes.md\n"
-               "  python claw.py abc123..def456 --full\n"
-               "  python claw.py HEAD -f json -o changes.json\n"
-               "  python claw.py HEAD~3 --repo /path/to/repo\n",
+               "  python Scripts/claw.py abc123\n"
+               "  python Scripts/claw.py abc123 -o changes.md\n"
+               "  python Scripts/claw.py abc123..def456 --full\n"
+               "  python Scripts/claw.py HEAD -f json -o changes.json\n"
+               "  python Scripts/claw.py HEAD~3 --repo /path/to/repo\n",
+
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
 

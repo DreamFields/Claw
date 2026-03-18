@@ -41,5 +41,6 @@ jobs:
 
       - name: Validate md2notion scripts
         run: |
-          node --check skills/md2notion/scripts/start_server.js
-          node --check skills/md2notion/scripts/upload.js
+          node --check Skills/md2notion/scripts/start_server.js
+          node --check Skills/md2notion/scripts/upload.js
+

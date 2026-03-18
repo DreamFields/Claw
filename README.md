@@ -1,28 +1,25 @@
-# 🐾 Claw
+# 🧰 AI Tool Library
 
 [![CI](https://img.shields.io/github/actions/workflow/status/DreamFields/Claw/ci.yml?branch=main&label=CI)](https://github.com/DreamFields/Claw/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Stars](https://img.shields.io/github/stars/DreamFields/Claw?style=social)](https://github.com/DreamFields/Claw/stargazers)
 
-**Claw** 是一个面向 **AI 辅助迁移** 的 Git 提交导出工具，同时这个仓库也整理收录了一组可复用的 CodeBuddy skills，方便公开分享、二次开发和直接复用。
+这是一个面向 **AI 工作流 / Agent 生态** 的工具库仓库，后续会持续收录：
 
-> Export Git commits into AI-friendly artifacts, and keep a curated set of reusable skills in one repository.
+- `MCP/`：面向模型上下文协议的工具或集成
+- `Skills/`：可复用的 Agent / CodeBuddy skill
+- `Plugins/`：插件、扩展或宿主集成
+- `Scripts/`：独立脚本、小工具、CLI 与自动化辅助程序
+
+当前仓库中的代表工具是 **Claw**：一个把 Git 提交导出为 AI 易读格式的脚本，便于在迁移项目时让 AI 自动理解并恢复改动。
 
 ## ✨ 快速导航
 
-- **主工具**：`claw.py`
-- **技能索引**：[skills/README.md](skills/README.md)
-- **B 站笔记 skill**：[skills/bilibili-notes/README.md](skills/bilibili-notes/README.md)
-- **Markdown to Notion skill**：[skills/md2notion/README.md](skills/md2notion/README.md)
+- **Scripts**：`Scripts/claw.py`
+- **Skills 索引**：[Skills/README.md](Skills/README.md)
+- **B 站笔记 skill**：[Skills/bilibili-notes/README.md](Skills/bilibili-notes/README.md)
+- **Markdown to Notion skill**：[Skills/md2notion/README.md](Skills/md2notion/README.md)
 - **许可证**：[LICENSE](LICENSE)
-
-## ✨ 仓库包含什么
-
-- `claw.py`：将某次 Git 提交导出为 AI 易读的结构化文件（Markdown / JSON）
-- `skills/`：整理后的公开 skill 集合，目前包含：
-  - `bilibili-notes`：从 B 站视频提取字幕、截图并生成结构化技术笔记
-  - `md2notion`：将 Markdown 笔记与本地图片上传到 Notion
-- `.github/`：基础 CI 工作流与 issue 模板，便于公开协作
 
 ## 📁 仓库结构
 
@@ -31,73 +28,74 @@ Claw/
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
 │   └── workflows/
-├── claw.py
+├── MCP/
+├── Plugins/
+├── Scripts/
+│   └── claw.py
+├── Skills/
+│   ├── README.md
+│   ├── bilibili-notes/
+│   │   ├── README.md
+│   │   ├── SKILL.md
+│   │   ├── .gitignore
+│   │   ├── requirements.txt
+│   │   ├── scripts/
+│   │   ├── assets/
+│   │   └── references/
+│   └── md2notion/
+│       ├── README.md
+│       ├── SKILL.md
+│       ├── .gitignore
+│       ├── scripts/
+│       ├── assets/
+│       └── references/
 ├── LICENSE
-├── README.md
-└── skills/
-    ├── README.md
-    ├── bilibili-notes/
-    │   ├── README.md
-    │   ├── SKILL.md
-    │   ├── .gitignore
-    │   ├── requirements.txt
-    │   ├── scripts/
-    │   ├── assets/
-    │   └── references/
-    └── md2notion/
-        ├── README.md
-        ├── SKILL.md
-        ├── .gitignore
-        ├── scripts/
-        ├── assets/
-        └── references/
+└── README.md
 ```
 
-## 🚀 快速开始
+## 🧭 顶层目录约定
 
-### 使用 `Claw` 导出提交
+- **`MCP/`**：放置 MCP server、桥接脚本、协议适配器或相关配置
+- **`Skills/`**：放置适合公开复用的 skill，每个 skill 自带 `README.md`、`SKILL.md` 和局部忽略规则
+- **`Plugins/`**：放置各类插件、IDE 集成、宿主扩展
+- **`Scripts/`**：放置可独立运行的脚本和 CLI 工具
+
+这样做的目标是：让这个仓库逐步演化成一个**面向 AI 的通用工具库**，而不是只承载单一脚本。
+
+## 🚀 当前可用工具
+
+### `Scripts/claw.py`
+
+`Claw` 用于把某次 Git 提交导出为 AI 易读的结构化文件（Markdown / JSON）。
 
 ```bash
 # 导出最新一次提交
-python claw.py HEAD
+python Scripts/claw.py HEAD
 
 # 导出指定提交到 Markdown 文件
-python claw.py abc1234 -o changes.md
+python Scripts/claw.py abc1234 -o changes.md
 
 # 导出为 JSON
-python claw.py HEAD -f json -o changes.json
+python Scripts/claw.py HEAD -f json -o changes.json
 
 # 导出时附带变更后完整文件内容
-python claw.py HEAD --full -o migration.md
+python Scripts/claw.py HEAD --full -o migration.md
 ```
 
-### 使用仓库里的公开 skills
+### `Skills/`
 
-先查看 skills 总览：
+目前已经整理入库的 skills：
 
-- [skills/README.md](skills/README.md)
+- [Skills/README.md](Skills/README.md)
+- [Skills/bilibili-notes/README.md](Skills/bilibili-notes/README.md)
+- [Skills/md2notion/README.md](Skills/md2notion/README.md)
 
-然后进入具体 skill：
-
-- [skills/bilibili-notes/README.md](skills/bilibili-notes/README.md)
-- [skills/md2notion/README.md](skills/md2notion/README.md)
-
-## 📖 `Claw` 功能特点
-
-- 📄 **Markdown 格式导出**：适合直接交给 AI 理解和执行
-- 📊 **JSON 格式导出**：适合程序化处理或二次集成
-- 📝 **完整提交元信息**：包含 hash、作者、日期、提交消息
-- 🔍 **精确 diff 内容**：便于 AI 按改动逐项还原
-- 📦 **新增文件完整内容**：有利于 AI 直接创建新文件
-- 🔄 **重命名 / 复制检测**：更完整表达一次提交中的结构变更
-- 🧭 **AI 迁移指南**：输出中自动附带还原建议
-
-## 🤖 AI 迁移工作流
+## 🤖 `Claw` 的典型工作流
 
 ### 导出阶段
 
 ```bash
-python claw.py <commit_hash> --full -o migration.md
+python Scripts/claw.py <commit_hash> --full -o migration.md
 ```
 
 ### 迁移阶段
@@ -115,21 +113,21 @@ AI 通常可以据此：
 
 ## 🛠️ 开源协作支持
 
-这个仓库现在包含一些基础开源协作设施：
+这个仓库当前已经包含一些基础协作设施：
 
-- **GitHub Actions CI**：自动检查 `claw.py`、`bilibili-notes` Python 脚本、`md2notion` Node 脚本的基础语法
+- **GitHub Actions CI**：自动检查 `Scripts/claw.py`、`Skills/bilibili-notes` 下的 Python 脚本、`Skills/md2notion` 下的 Node 脚本
 - **Issue 模板**：区分 bug report 与 feature request
-- **清晰的 skill 索引**：降低仓库访客的理解成本
+- **统一目录分层**：方便后续继续扩展 MCP、Skills、Plugins、Scripts
 
 ## 🔐 安全说明
 
 为了让这个仓库更适合公开分享，仓库中已显式排除以下内容：
 
-- `bilibili-notes` 下的真实 `cookie.txt`、`cookie.json`
+- `Skills/bilibili-notes` 下的真实 `cookie.txt`、`cookie.json`
 - 所有 `node_modules`、`__pycache__`、`.env*` 等本地依赖与环境文件
 - 各 skill 运行时生成的本地输出、缓存与截图目录
 
-如果你要继续往这个仓库收录新的 skill，建议保持同样策略：
+如果后续继续往这个仓库收录新工具，建议保持同样策略：
 
 - **只提交源码、文档、示例与最小依赖清单**
 - **不要提交 token、cookie、缓存、输出物或本地安装目录**
